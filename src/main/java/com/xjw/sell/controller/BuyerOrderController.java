@@ -7,6 +7,7 @@ import com.xjw.sell.dto.OrderDTO;
 import com.xjw.sell.enums.ResultEnum;
 import com.xjw.sell.exception.SellException;
 import com.xjw.sell.form.OrderForm;
+import com.xjw.sell.service.BuyerService;
 import com.xjw.sell.service.OrderService;
 import com.xjw.sell.utils.ResultVOUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -36,6 +37,9 @@ public class BuyerOrderController {
 
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private BuyerService buyerService;
 
     //创建订单
     @PostMapping("/create")
@@ -75,19 +79,20 @@ public class BuyerOrderController {
     @GetMapping("/detail")
     public ResultVO<OrderDTO> detail(@RequestParam("openid") String openid,
                                      @RequestParam("orderId") String orderId) {
-        //TODO 安全性问题
-        OrderDTO orderDTO = orderService.findOne(orderId);
-        return ResultVOUtil.success(orderDTO);
+        // 安全性问题
+        // OrderDTO orderDTO = orderService.findOne(orderId);
+        return ResultVOUtil.success(buyerService.findOrderOne(openid, orderId));
     }
+
 
     //取消订单
     @PostMapping("/cancel")
     public ResultVO cancel(@RequestParam("openid") String openid,
-                           @RequestParam("orderId") String orderId){
-        //TODO 不安全，安全性问题
-        OrderDTO orderDTO = orderService.findOne(orderId);
-        orderService.cancel(orderDTO);
-
+                           @RequestParam("orderId") String orderId) {
+        // 不安全，安全性问题
+        // OrderDTO orderDTO = orderService.findOne(orderId);
+        // orderService.cancel(orderDTO);
+        buyerService.cancelOrder(openid, orderId);
         return ResultVOUtil.success();
     }
 
