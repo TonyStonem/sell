@@ -2,7 +2,6 @@ package com.xjw.sell.controller;
 
 import com.xjw.sell.VO.ResultVO;
 import com.xjw.sell.converter.OrderForm2OrderDTOConverter;
-import com.xjw.sell.dataobject.OrderDetail;
 import com.xjw.sell.dto.OrderDTO;
 import com.xjw.sell.enums.ResultEnum;
 import com.xjw.sell.exception.SellException;
@@ -83,7 +82,6 @@ public class BuyerOrderController {
         // OrderDTO orderDTO = orderService.findOne(orderId);
         return ResultVOUtil.success(buyerService.findOrderOne(openid, orderId));
     }
-
 
     //取消订单
     @PostMapping("/cancel")

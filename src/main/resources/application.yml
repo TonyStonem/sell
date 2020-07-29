@@ -14,3 +14,6 @@ logging:
 server:
   servlet:
     context-path: /sell
+wechat:
+  appId: 暂时没有
+  appSecret: 暂时没有

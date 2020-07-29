@@ -36,6 +36,12 @@
 			</exclusions>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+
 		<!-- junit依赖 -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -61,7 +67,6 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
-		<!-- validator -->
 		<!-- hibernate-validator -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -80,6 +85,13 @@
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
+		</dependency>
+
+		<!-- weixin-java-tools -->
+		<dependency>
+			<groupId>com.github.binarywang</groupId>
+			<artifactId>weixin-java-mp</artifactId>
+			<version>3.8.0</version>
 		</dependency>
 	</dependencies>
 
