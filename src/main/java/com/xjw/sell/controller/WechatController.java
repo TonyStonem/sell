@@ -16,12 +16,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.net.URLEncoder;
 
 /**
- * TODO 暂无认证公众号故未测试
+ * 暂无认证公众号
+ * 现在使用微信测试号进行测试
+ *
  * 2020/7/28 17:27
  *
  * @author <a href="1521975316@qq.com">xjw</a>
  * @record:
+ * ① 2020/08/03 09点56分 xjw：
+ *      申请了微信测试号，可以进行测试了
+ * ② 2020/08/03 11点34分 xjw：
+ *      测试通过，ok
  */
+//@RestController
 @Controller
 @RequestMapping("/wechat")
 @Slf4j
@@ -32,9 +39,9 @@ public class WechatController {
 
     @GetMapping("/authorize")
     public String authorize(@RequestParam("returnUrl") String returnUrl) {
-        //1. 配置 WechatMPConfig
+        //        //1. 配置 WechatMPConfig
         //2. 调用方法
-        String url = "http://wcag4h.natappfree.cc/sell/wechat/userInfo";
+        String url = "http://192.168.1.13:8080/sell/wechat/userInfo";
         String redirectUrl = wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAuth2Scope.SNSAPI_USERINFO, URLEncoder.encode(returnUrl));
         log.info("【微信网页授权】获取code，result={}", redirectUrl);
         return "redirect:" + redirectUrl;
@@ -47,7 +54,7 @@ public class WechatController {
         try {
             wxMpOAuth2AccessToken = wxMpService.oauth2getAccessToken(code);
         } catch (WxErrorException e) {
-            log.error("【微信网页授权】 {}", e);
+            log.error("【微信网页授权】，{}", e);
             throw new SellException(ResultEnum.WX_MP_ERROR.getCode(), e.getError().getErrorMsg());
         }
         String openId = wxMpOAuth2AccessToken.getOpenId();

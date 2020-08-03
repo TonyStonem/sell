@@ -3,7 +3,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: 123456
-    url: jdbc:mysql://192.168.1.240/sell?characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://192.168.1.248/sell?characterEncoding=utf-8&useSSL=false
   jpa:
     show-sql: true
   jackson:
@@ -15,5 +15,28 @@ server:
   servlet:
     context-path: /sell
 wechat:
-  appId: 暂时没有
-  appSecret: 暂时没有
+#
+# XJW Studio 公众号相关
+#  appId: wx94dec4a3b6e22d4f
+#  appSecret: 55d4e882a84368ab9ced03f1a8734508
+#
+# 微信测试号
+  appId: wx9c9657f189955fd9
+  appSecret: b9597c0877acf9950ed88541dacccd24
+#
+# 外网映射域名
+#   注：映射的域名每次都会新生成，及时更新
+#       1. 微信测试号js 安全域名设置
+# http://xf26xf.natappfree.cc
+#
+#
+# 虚拟机ip
+#   注：每次打开虚拟机地址都会变更，需要更新的地方
+#       1. application.yml -> mysql的地址
+#       2. sell.com本地windows映射的地址，hosts -> C:\Windows\System32\drivers\etc
+#       3. 数据库连接地址
+# 192.168.1.248
+#
+# 本机ip
+# 192.168.1.13
+#
